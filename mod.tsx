@@ -23,8 +23,9 @@ export async function serve<O>(options: CreateConfigOptions<O>) {
     },
     ...options,
     src: [
-      new URL("pages/index.tsx", import.meta.url).href,
-      new URL("pages/benchmarks.tsx", import.meta.url).href,
+      new URL("pages", import.meta.url).href,
+      // new URL("pages/index.tsx", import.meta.url).href,
+      // new URL("pages/benchmarks.tsx", import.meta.url).href,
       ...typeof options.src === "string" ? [options.src] : options.src ?? [],
     ],
   });
