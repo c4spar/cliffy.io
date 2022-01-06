@@ -19,6 +19,6 @@ export {
   textMain,
   transformGpu,
   tw,
-} from "https://raw.githubusercontent.com/c4spar/nano-deploy/v0.0.3/mod.ts";
+} from "https://raw.githubusercontent.com/c4spar/nano-deploy/v0.0.5/mod.ts";
 
 export { assert } from "https://deno.land/std@0.119.0/testing/asserts.ts";
