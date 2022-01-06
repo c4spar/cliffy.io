@@ -19,5 +19,9 @@ export async function serve<O>(options: CreateConfigOptions<O>) {
       }],
     },
     ...options,
+    src: [
+      new URL("pages", import.meta.url).href,
+      ...typeof options.src === "string" ? [options.src] : options.src ?? [],
+    ],
   });
 }
