@@ -5,6 +5,9 @@ import { CreateConfigOptions, h, serve as npServe } from "./deps.ts";
 
 export { ExamplesDataProvider } from "./pages/index.tsx";
 
+console.log("URL:", import.meta.url);
+console.log("PAGES:", new URL("pages", import.meta.url).href);
+
 export async function serve<O>(options: CreateConfigOptions<O>) {
   await npServe({
     rev: "main",
@@ -19,5 +22,9 @@ export async function serve<O>(options: CreateConfigOptions<O>) {
       }],
     },
     ...options,
+    src: [
+      new URL("pages", import.meta.url).href,
+      ...typeof options.src === "string" ? [options.src] : options.src ?? [],
+    ],
   });
 }
