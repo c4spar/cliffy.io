@@ -1,15 +1,14 @@
 import { ExamplesDataProvider, serve } from "./mod.tsx";
 
-await serve({
-  repository: "c4spar/deno-cliffy",
-  src: [],
-  providers: [
-    {
+if (import.meta.main) {
+  await serve({
+    src: [{ src: "c4spar/deno-cliffy@main:docs/src", prefix: "/docs" }],
+    providers: [{
       component: ExamplesDataProvider,
       props: {
-        src: "c4spar/deno-cliffy@main:/docs/examples",
+        src: "c4spar/deno-cliffy@main:docs/examples",
         selected: "command.ts",
       },
-    },
-  ],
-});
+    }],
+  });
+}

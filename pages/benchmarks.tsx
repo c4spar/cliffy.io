@@ -8,7 +8,6 @@
 import {
   capitalize,
   Component,
-  FileOptions,
   Fragment,
   getFiles,
   h,
@@ -16,7 +15,8 @@ import {
   Page,
   Provider,
   sortByKey,
-  transformGpu,
+  SourceFile,
+  styles,
   tw,
 } from "../deps.ts";
 import { stringToColor } from "../lib/utils.ts";
@@ -41,10 +41,10 @@ export interface ModuleData {
 }
 
 interface BenchmarksPageOptions {
-  benchmarks: Array<FileOptions>;
+  benchmarks: Array<SourceFile>;
 }
 
-class BenchmarksPageProvider implements Provider<BenchmarksPageOptions> {
+export class BenchmarksPageProvider implements Provider<BenchmarksPageOptions> {
   async onInit(
     req: Request,
   ): Promise<BenchmarksPageOptions> {
@@ -52,7 +52,6 @@ class BenchmarksPageProvider implements Provider<BenchmarksPageOptions> {
       benchmarks: await getFiles("c4spar/cliffy-benchmarks@main:data", {
         pattern: /\.json/,
         read: true,
-        cacheKey: req.url,
         req,
       }),
     };
@@ -72,14 +71,16 @@ export default class BenchmarksPage extends Component<BenchmarksPageOptions> {
         <Helmet footer>
           <script src="https://cdn.jsdelivr.net/npm/chart.js@v3.6.1" />
         </Helmet>
-        <div class={tw`${transformGpu} container mx-auto space-y-16`}>
+        <div
+          class={tw`${styles.transform.primary} container mx-auto space-y-16`}
+        >
           {this.props.benchmarks.map((file) => this.renderCharts(file))}
         </div>
       </Fragment>
     );
   }
 
-  renderCharts({ fileName, content }: FileOptions) {
+  renderCharts({ fileName, content }: SourceFile) {
     const benchmarks: Array<ModuleData> = JSON.parse(content).sort(
       sortByKey("name"),
     );

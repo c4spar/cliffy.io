@@ -1,10 +1,18 @@
 /** @jsx h */
 
-import { Code, Component, Fragment, h, Helmet, tw } from "../deps.ts";
+import {
+  CodeBlock,
+  Component,
+  Fragment,
+  h,
+  Helmet,
+  styles,
+  tw,
+} from "../deps.ts";
 
 export interface TabOptions {
   fileName: string;
-  content: string;
+  code: string;
   shebang: string;
 }
 
@@ -17,13 +25,11 @@ export class Editor extends Component<EditorOptions> {
   render() {
     return (
       <Fragment>
-        <Helmet>
-          <script type="application/javascript" src="/highlight.min.js" />
-          <script>hljs.highlightAll();</script>
-        </Helmet>
         <div
-          class={tw
-            `flex-grow rounded-xl bg-gray-900 shadow-xl overflow-hidden mb-5`}
+          class={tw`flex-grow rounded-xl
+            bg-gray-900 dark:bg(gray-600 opacity-40)
+            shadow-xl overflow-hidden mb-5
+            ${styles.transform.primary}`}
         >
           <div class={tw`flex top-0 items-center overflow-y-auto`}>
             <span class={tw`w-3 h-3 rounded-full ml-3 bg-red-600`} />
@@ -71,7 +77,48 @@ export class Editor extends Component<EditorOptions> {
   }
 
   #renderTabContent(tab: TabOptions, selected?: boolean) {
-    const script = `{
+    return (
+      <Fragment>
+        <Helmet footer>
+          <script>{this.#getTabScript(tab)}</script>
+        </Helmet>
+        <div
+          id={this.#getId(tab, "tab-content")}
+          class={`dark tab-content ${tw`flex overflow-auto h-[42rem] ${
+            selected ? "" : "hidden"
+          }`}`}
+        >
+          <span
+            class={tw
+              `w-14 px-2 py-4 text-right font-mono text-sm text-gray-600`}
+          >
+            {tab.code.trim().split("\n").map((_, i) => <div>{i + 1}</div>)}
+          </span>
+
+          <CodeBlock code={tab.code} lang="javascript" margin={false} />
+        </div>
+      </Fragment>
+    );
+  }
+
+  #renderTabExample(tab: TabOptions, selected?: boolean) {
+    const url = `https://cliffy.io/v0.20.1/examples/${tab.fileName}`;
+    const code = tab.shebang.replace(/^#!\/usr\/bin\/env -S/, "$") + " " + url;
+    return (
+      <div class="dark">
+        <CodeBlock
+          id={this.#getId(tab, "tab-example")}
+          class={`tab-example ${tw`${selected ? "" : "hidden"}`}`}
+          code={code}
+          lang="shell"
+          rounded
+        />
+      </div>
+    );
+  }
+
+  #getTabScript(tab: TabOptions) {
+    return `{
       document.getElementById("${
       this.#getId(tab, "tab-button")
     }").addEventListener("click", function () {
@@ -94,41 +141,5 @@ export class Editor extends Component<EditorOptions> {
     }").classList.remove("hidden");
       });
     }`;
-    return (
-      <Fragment>
-        <Helmet footer>
-          <script>{script}</script>
-        </Helmet>
-        <div
-          id={this.#getId(tab, "tab-content")}
-          class={`tab-content ${tw`flex overflow-auto h-[42rem] ${
-            selected ? "" : "hidden"
-          }`}`}
-        >
-          <div
-            class={tw
-              `w-14 px-2 py-3 text-right font-mono text-sm text-gray-600`}
-          >
-            {tab.content.trim().split("\n").map((_, i) => <div>{i + 1}</div>)}
-          </div>
-          <Code code={tab.content} lang="javascript" />
-          {/*<SecondaryButton class={}>Foo</SecondaryButton>*/}
-        </div>
-      </Fragment>
-    );
-  }
-
-  #renderTabExample(tab: TabOptions, selected?: boolean) {
-    const url = `https://cliffy.io/v0.20.1/examples/${tab.fileName}`;
-    const code = tab.shebang.replace(/^#!\/usr\/bin\/env -S/, "$") + " " + url;
-    return (
-      <Code
-        id={this.#getId(tab, "tab-example")}
-        class={`tab-example ${tw`${selected ? "" : "hidden"}`}`}
-        code={code}
-        lang="shell"
-        rounded
-      />
-    );
   }
 }

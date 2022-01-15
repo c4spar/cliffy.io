@@ -12,19 +12,29 @@ import {
   AnimatedText,
   assert,
   Component,
-  FileOptions,
   getFiles,
   h,
   Helmet,
   Page,
   Provider,
-  transformGpu,
+  SourceFile,
+  styles,
   tw,
 } from "../deps.ts";
+
+interface HomePageOptions {
+  examples: Array<Example>;
+  selectedExample?: string;
+}
 
 export interface ExamplesDataProviderOptions {
   src: string;
   selected: string;
+}
+
+export interface Example extends SourceFile {
+  code: string;
+  shebang: string;
 }
 
 export class ExamplesDataProvider
@@ -45,15 +55,15 @@ export class ExamplesDataProvider
     const files = await getFiles(options.src, {
       pattern: /\.ts$/,
       read: true,
-      cacheKey: req.url,
       req,
     });
 
-    const examples = files.map((file) => ({
-      ...file,
-      content: file.content.replace(/#!.+\n+/, ""),
-      shebang: file.content.split("\n")[0],
-    }));
+    const examples = files.map((file) =>
+      Object.assign(file, {
+        code: file.content.replace(/#!.+\n+/, ""),
+        shebang: file.content.split("\n")[0],
+      })
+    );
 
     return {
       selectedExample: options.selected,
@@ -62,22 +72,13 @@ export class ExamplesDataProvider
   }
 }
 
-export interface Example extends FileOptions {
-  shebang: string;
-}
-
-interface HomePageOptions {
-  examples: Array<Example>;
-  selectedExample?: string;
-}
-
 @Page({
   providers: [ExamplesDataProvider],
 })
 export default class HomePage extends Component<HomePageOptions> {
   render() {
     return (
-      <div css={tw`${transformGpu}`}>
+      <div css={tw`${styles.transform.primary}`}>
         <Helmet>
           <title>Cliffy - Home</title>
         </Helmet>

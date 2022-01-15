@@ -1,12 +1,10 @@
 export {
   AnimatedText,
-  bgMain,
   capitalize,
   type Children,
-  Code,
+  CodeBlock,
   Component,
   type CreateConfigOptions,
-  type FileOptions,
   Fragment,
   getFiles,
   h,
@@ -16,9 +14,9 @@ export {
   render,
   serve,
   sortByKey,
-  textMain,
-  transformGpu,
+  SourceFile,
+  styles,
   tw,
-} from "https://raw.githubusercontent.com/c4spar/nano-deploy/v0.0.5/mod.ts";
+} from "https://raw.githubusercontent.com/c4spar/nano-deploy/v0.0.6/mod.ts";
 
 export { assert } from "https://deno.land/std@0.119.0/testing/asserts.ts";
