@@ -19,4 +19,4 @@ export {
   tw,
 } from "https://raw.githubusercontent.com/c4spar/nano-deploy/v0.0.6/mod.ts";
 
-export { assert } from "https://deno.land/std@0.119.0/testing/asserts.ts";
+export { assert } from "https://deno.land/std@0.121.0/testing/asserts.ts";
