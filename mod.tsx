@@ -18,7 +18,6 @@ export async function serve<O>(options: CreateConfigOptions<O>) {
   await npServe({
     name: "Cliffy",
     pages: true,
-    background: () => <PageBackground />,
     nav: {
       collapse: true,
       items: [{
