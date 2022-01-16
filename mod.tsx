@@ -16,6 +16,7 @@ export async function serve<O>(options: CreateConfigOptions<O>) {
     : options.src ?? [];
 
   await npServe({
+    name: "Cliffy",
     pages: true,
     background: () => <PageBackground />,
     nav: {
