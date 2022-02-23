@@ -84,8 +84,8 @@ export default class HomePage extends Component<HomePageOptions> {
         </Helmet>
 
         <AnimatedText
-          speed={30}
           delay={200}
+          speed={60}
           animation="animate-left-right"
           class={tw`font-display font-bold text-center
             my-12 lg:mb-8 lg:mt-12 xl:my-12
@@ -105,8 +105,8 @@ export default class HomePage extends Component<HomePageOptions> {
               `flex-1 space-y-12 xl:space-y-16 lg:pt-10 xl:pt-0 pb-12 xl:pb-20`}
           >
             <AnimatedText
-              delay={700}
-              speed={2}
+              delay={900}
+              speed={6}
               animation="animate-left-right"
               evenColor="text-purple-500"
               oddColor="text-blue-400"
@@ -118,8 +118,8 @@ export default class HomePage extends Component<HomePageOptions> {
             </AnimatedText>
 
             <AnimatedText
-              delay={1300}
-              speed={1}
+              delay={1100}
+              speed={2}
               class={tw`font-bold text-center`}
             >
               Cliffy is a fullstack CLI Framework that lets you write
