@@ -17,6 +17,6 @@ export {
   SourceFile,
   styles,
   tw,
-} from "https://raw.githubusercontent.com/c4spar/nano-deploy/v0.1.1/mod.ts";
+} from "https://raw.githubusercontent.com/c4spar/nano-deploy/v0.1.3/mod.ts";
 
-export { assert } from "https://deno.land/std@0.121.0/testing/asserts.ts";
+export { assert } from "https://deno.land/std@0.127.0/testing/asserts.ts";
