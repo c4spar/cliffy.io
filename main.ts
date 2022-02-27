@@ -1,7 +1,4 @@
-import {
-  serve,
-  SourceFile,
-} from "./deps.ts";
+import { serve, SourceFile } from "./deps.ts";
 import { ExamplesDataProvider } from "./pages/index.tsx";
 
 await serve({
@@ -33,8 +30,7 @@ await serve({
   },
   scripts: {
     "/google-fonts.css": {
-      url:
-        "https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap",
+      url: "https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap",
       contentType: "text/css",
     },
   },
