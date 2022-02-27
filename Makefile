@@ -8,5 +8,5 @@ lint:
 fmt:
 	deno fmt
 serve:
-	deno run --watch=. --allow-env --allow-net main.ts
+	deno run --watch=. --allow-env --allow-net --allow-read main.ts
 
