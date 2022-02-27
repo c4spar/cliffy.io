@@ -1,3 +1,3 @@
 # cliffy.io
 
-Website for cliffy.
+This repository contains the website for [cliffy.io](https://cliffy.io).
