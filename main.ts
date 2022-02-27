@@ -1,22 +1,14 @@
 import { serve, SourceFile } from "./deps.ts";
 import { addModuleVersion } from "./lib/utils.ts";
-import { ExamplesDataProvider } from "./pages/index.tsx";
+import HomePage from "./pages/index.tsx";
 
 await serve({
   name: "Cliffy",
   repository: "c4spar/deno-cliffy",
   src: [
-    "pages",
+    { src: "pages", file: "index.tsx", component: HomePage },
     { src: "c4spar/cliffy-manual@main:/", prefix: "/docs" },
   ],
-  providers: [{
-    component: ExamplesDataProvider,
-    props: {
-      // src: "c4spar/deno-cliffy@main:examples",
-      src: "examples",
-      selected: "command.ts",
-    },
-  }],
   pages: true,
   nav: {
     collapse: true,

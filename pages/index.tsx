@@ -42,18 +42,21 @@ export class ExamplesDataProvider
   implements Provider<HomePageOptions, ExamplesDataProviderOptions> {
   async onInit(
     req: Request,
-    options: ExamplesDataProviderOptions,
+    {
+      src = "examples",
+      selected = "command.ts",
+    }: ExamplesDataProviderOptions,
   ): Promise<HomePageOptions> {
     assert(
-      options.src,
+      src,
       "[ExamplesDataProvider] Missing required option src",
     );
     assert(
-      options.selected,
+      selected,
       "[ExamplesDataProvider] Missing required option selected",
     );
 
-    const files = await getFiles(options.src, {
+    const files = await getFiles(src, {
       pattern: /\.ts$/,
       read: true,
       req,
@@ -80,7 +83,7 @@ export class ExamplesDataProvider
     );
 
     return {
-      selectedExample: options.selected,
+      selectedExample: selected,
       examples,
     };
   }
