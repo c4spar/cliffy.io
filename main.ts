@@ -1,4 +1,5 @@
 import { serve, SourceFile } from "./deps.ts";
+import { addModuleVersion } from "./lib/utils.ts";
 import { ExamplesDataProvider } from "./pages/index.tsx";
 
 await serve({
@@ -11,7 +12,7 @@ await serve({
   providers: [{
     component: ExamplesDataProvider,
     props: {
-      src: "examples",
+      src: "c4spar/cliffy-manual@main:examples",
       selected: "command.ts",
     },
   }],
@@ -35,27 +36,6 @@ await serve({
     },
   },
   sanitize(file: SourceFile) {
-    // Add selected version to cliffy module imports.
-    if (file.rev) {
-      return file.content
-        .replace(
-          /https:\/\/deno\.land\/x\/cliffy\//g,
-          `https://deno.land/x/cliffy@${file.rev}/`,
-        )
-        .replace(
-          /https:\/\/deno\.land\/x\/cliffy@<version>\//g,
-          `https://deno.land/x/cliffy@${file.rev}/`,
-        )
-        .replace(
-          /https:\/\/x\.nest\.land\/cliffy@<version>\//g,
-          `https://x.nest.land/cliffy@${file.rev}/`,
-        )
-        .replace(
-          /https:\/\/raw\.githubusercontent\.com\/c4spar\/deno-cliffy\/<version>\//g,
-          `https://raw.githubusercontent.com/c4spar/deno-cliffy/${file.rev}/`,
-        );
-    }
-
-    return file.content;
+    return addModuleVersion(file.content, file.rev);
   },
 });

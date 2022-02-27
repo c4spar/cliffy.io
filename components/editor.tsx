@@ -13,7 +13,7 @@ import {
 export interface TabOptions {
   fileName: string;
   code: string;
-  shebang: string;
+  command: string;
 }
 
 export interface EditorOptions {
@@ -102,14 +102,12 @@ export class Editor extends Component<EditorOptions> {
   }
 
   #renderTabExample(tab: TabOptions, selected?: boolean) {
-    const url = `https://cliffy.io/v0.20.1/examples/${tab.fileName}`;
-    const code = tab.shebang.replace(/^#!\/usr\/bin\/env -S/, "$") + " " + url;
     return (
       <div class="dark">
         <CodeBlock
           id={this.#getId(tab, "tab-example")}
           class={`tab-example ${tw`${selected ? "" : "hidden"}`}`}
-          code={code}
+          code={tab.command}
           lang="shell"
           rounded
         />

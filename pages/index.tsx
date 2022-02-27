@@ -8,6 +8,7 @@
 import { PrimaryButton, SecondaryButton } from "../components/buttons.tsx";
 import { Editor } from "../components/editor.tsx";
 import { ArrowForward } from "../components/icons.tsx";
+import { addModuleVersion } from "../lib/utils.ts";
 import {
   AnimatedText,
   assert,
@@ -34,7 +35,7 @@ export interface ExamplesDataProviderOptions {
 
 export interface Example extends SourceFile {
   code: string;
-  shebang: string;
+  command: string;
 }
 
 export class ExamplesDataProvider
@@ -45,23 +46,36 @@ export class ExamplesDataProvider
   ): Promise<HomePageOptions> {
     assert(
       options.src,
-      "Missing provider option src for ExamplesDataProvider.",
+      "[ExamplesDataProvider] Missing required option src",
     );
     assert(
       options.selected,
-      "Missing provider option selected for ExamplesDataProvider.",
+      "[ExamplesDataProvider] Missing required option selected",
     );
 
     const files = await getFiles(options.src, {
       pattern: /\.ts$/,
       read: true,
       req,
+      versions: true,
     });
+
+    const basePath: string | undefined = files[0]?.basePath;
+    const examplesUrl = `https://deno.land/x/cliffy/${basePath}`;
 
     const examples = files.map((file) =>
       Object.assign(file, {
-        code: file.content.replace(/#!.+\n+/, ""),
-        shebang: file.content.split("\n")[0],
+        code: addModuleVersion(
+          file.content.replace(/#!.+\n+/, ""),
+          file.rev,
+        ),
+        command: addModuleVersion(
+          file.content
+            .split("\n")[0]
+            .replace(/^#!\/usr\/bin\/env -S/, "$") +
+            ` ${examplesUrl}/${file.fileName}`,
+          file.rev,
+        ),
       })
     );
 
