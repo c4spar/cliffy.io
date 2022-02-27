@@ -7,12 +7,13 @@ await serve({
   repository: "c4spar/deno-cliffy",
   src: [
     "pages",
-    { src: "c4spar/cliffy-manual@main:src", prefix: "/docs" },
+    { src: "c4spar/cliffy-manual@main:/", prefix: "/docs" },
   ],
   providers: [{
     component: ExamplesDataProvider,
     props: {
-      src: "c4spar/cliffy-manual@main:examples",
+      // src: "c4spar/deno-cliffy@main:examples",
+      src: "examples",
       selected: "command.ts",
     },
   }],
