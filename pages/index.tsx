@@ -104,7 +104,7 @@ export default class HomePage extends Component<HomePageOptions> {
           delay={200}
           speed={60}
           animation="animate-left-right"
-          class={tw`font-display font-bold text-center
+          class={tw`font-fredoka font-bold text-center
             my-12 lg:mb-8 lg:mt-12 xl:my-12
             text-[5rem] leading-[4rem]
             sm:text-[10rem] sm:leading-[8rem]
@@ -128,7 +128,7 @@ export default class HomePage extends Component<HomePageOptions> {
               evenColor="text-purple-500"
               oddColor="text-blue-400"
               wordSpace={2}
-              class={tw`font-nerd font-bold text-center
+              class={tw`font-primary font-bold text-center
                  text-2xl leading-7 sm:text-3xl space-x-2`}
             >
               The Framework for Building Interactive Commandline Tools with Deno
@@ -137,7 +137,7 @@ export default class HomePage extends Component<HomePageOptions> {
             <AnimatedText
               delay={1100}
               speed={2}
-              class={tw`font-bold text-center`}
+              class={tw`font-primary font-bold text-center`}
             >
               Cliffy is a fullstack CLI Framework that lets you write
               interactive Command Line Tools with Deno.

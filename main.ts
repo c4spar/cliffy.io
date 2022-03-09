@@ -14,12 +14,13 @@ await serve({
     collapse: true,
     items: [{
       label: "API",
-      href: "https://doc.deno.land/https://deno.land/x/cliffy@{rev}/mod.ts",
+      href: "https://doc.deno.land/https://deno.land/x/cliffy/mod.ts",
     }],
   },
   theme: {
     fontFamily: {
-      display: ["Fredoka One"],
+      fredoka: ["Fredoka One"],
+      primary: ["Mija"],
     },
   },
   scripts: {
@@ -27,7 +28,14 @@ await serve({
       url: "https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap",
       contentType: "text/css",
     },
+    "/assets/fonts/mija/stylesheet.css": {
+      url: "assets/fonts/mija/stylesheet.css",
+      contentType: "text/css",
+    },
   },
+  assets: [
+    "assets",
+  ],
   sanitize(file: SourceFile) {
     return addModuleVersion(file.content, file.rev);
   },
