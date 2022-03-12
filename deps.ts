@@ -5,6 +5,7 @@ export {
   CodeBlock,
   Component,
   type CreateConfigOptions,
+  css,
   Fragment,
   getFiles,
   h,
