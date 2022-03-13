@@ -141,8 +141,9 @@ export default class HomePage extends Component<HomePageOptions> {
                 text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-600
               `}
             >
-              Create complex and type safe commandline tools with build-in input
-              validation, auto generated help, shell completions, and more.
+              Create complex and type-safe commandline tools with build-in input
+              validation, auto generated help, shell completions, beautiful
+              prompts and more...
             </AnimatedText>
 
             <div class={tw`flex justify-center space-x-4`}>
