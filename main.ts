@@ -1,4 +1,4 @@
-import { serve, SourceFile, env } from "./deps.ts";
+import { env, serve, SourceFile } from "./deps.ts";
 import { addModuleVersion } from "./lib/utils.ts";
 import HomePage from "./pages/index.tsx";
 
