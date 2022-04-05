@@ -1,4 +1,4 @@
-import { serve, SourceFile } from "./deps.ts";
+import { serve, SourceFile, env } from "./deps.ts";
 import { addModuleVersion } from "./lib/utils.ts";
 import HomePage from "./pages/index.tsx";
 
@@ -9,6 +9,11 @@ await serve({
     { src: "pages", file: "index.tsx", component: HomePage },
     { src: "c4spar/cliffy-manual@main:/", prefix: "/docs" },
   ],
+  docSearch: {
+    indexName: env("DOC_SEARCH_INDEX_NAME"),
+    appId: env("DOC_SEARCH_APP_ID"),
+    apiKey: env("DOC_SEARCH_API_KEY"),
+  },
   pages: true,
   nav: {
     collapse: true,
