@@ -18,7 +18,7 @@ export {
   SourceFile,
   styles,
   tw,
-} from "https://deno.land/x/night_owl@v0.1.18/mod.ts";
-export { env } from "https://deno.land/x/night_owl@v0.1.18/lib/utils.ts";
+} from "https://raw.githubusercontent.com/c4spar/night-owl/df0c43247f88c058edf7057d34ef4382a7156659/mod.ts";
+export { env } from "https://raw.githubusercontent.com/c4spar/night-owl/df0c43247f88c058edf7057d34ef4382a7156659/lib/utils.ts";
 
 export { assert } from "https://deno.land/std@0.127.0/testing/asserts.ts";
