@@ -103,13 +103,14 @@ export default class HomePage extends Component<HomePageOptions> {
         <AnimatedText
           delay={200}
           speed={60}
-          animation="animate-left-right"
-          class={tw`font-fredoka font-bold text-center
+          class={tw`
+            font(fredoka bold) text-center
             my-12 lg:mb-8 lg:mt-12 xl:my-12
             text-[5rem] leading-[4rem]
             sm:text-[10rem] sm:leading-[8rem]
             lg:text-[14rem] lg:leading-[10rem]
-            xl:text-[18rem] xl:leading-[14rem]`}
+            xl:text-[18rem] xl:leading-[14rem]
+          `}
         >
           CLIFFY
         </AnimatedText>
@@ -124,11 +125,14 @@ export default class HomePage extends Component<HomePageOptions> {
             <AnimatedText
               delay={900}
               speed={6}
-              animation="animate-left-right"
               wordSpace={2}
-              class={tw`font-primary font-bold text-center
-                 text-2xl leading-7 sm:text-3xl space-x-2
-                 text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-600`}
+              webKitFix={true}
+              class={tw`
+                font(primary bold)
+                text(center 2xl sm:3xl transparent)
+                leading-7 space-x-2
+                bg(clip-text gradient-to-br) from-blue-400 to-purple-600
+              `}
             >
               The Framework for Building Interactive Commandline Tools with Deno
             </AnimatedText>
@@ -136,9 +140,11 @@ export default class HomePage extends Component<HomePageOptions> {
             <AnimatedText
               delay={1100}
               speed={2}
+              webKitFix={true}
               class={tw`
-                font-primary font-bold text-center
-                text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-600
+                font(primary bold)
+                text(center transparent)
+                bg(clip-text gradient-to-br) from-blue-400 to-purple-600
               `}
             >
               Create complex and type-safe commandline tools with build-in input
