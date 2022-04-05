@@ -49,11 +49,11 @@ export class ExamplesDataProvider
   ): Promise<HomePageOptions> {
     assert(
       src,
-      "[ExamplesDataProvider] Missing required option src",
+      "[ExamplesDataProvider] Missing required option src.",
     );
     assert(
       selected,
-      "[ExamplesDataProvider] Missing required option selected",
+      "[ExamplesDataProvider] Missing required option selected.",
     );
 
     const files = await getFiles(src, {
