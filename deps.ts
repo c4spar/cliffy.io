@@ -18,6 +18,6 @@ export {
   SourceFile,
   styles,
   tw,
-} from "https://raw.githubusercontent.com/c4spar/night-owl/v0.1.17/mod.ts";
+} from "https://deno.land/x/night_owl@v0.1.18/mod.ts";
 
 export { assert } from "https://deno.land/std@0.127.0/testing/asserts.ts";

@@ -1,5 +1,5 @@
 {
   "imports": {
-    "https://raw.githubusercontent.com/c4spar/night-owl/v0.1.17/": "../night-owl/"
+    "https://deno.land/x/night_owl@v0.1.18/": "../night-owl/"
   }
 }
