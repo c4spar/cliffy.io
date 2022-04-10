@@ -43,7 +43,7 @@ export class ExamplesDataProvider
   async onInit(
     req: Request,
     {
-      src = "c4spar/deno-cliffy@main:/examples",
+      src = "examples",
       selected = "command.ts",
     }: ExamplesDataProviderOptions,
   ): Promise<HomePageOptions> {
