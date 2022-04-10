@@ -1,5 +1,5 @@
 {
   "imports": {
-    "https://deno.land/x/night_owl@v0.1.20/": "../night-owl/"
+    "https://deno.land/x/night_owl@v0.1.21/": "../night-owl/"
   }
 }
