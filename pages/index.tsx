@@ -61,6 +61,7 @@ export class ExamplesDataProvider
       read: true,
       req,
       versions: true,
+      repository: "c4spar/deno-cliffy",
     });
 
     const basePath: string | undefined = files[0]?.basePath;
@@ -119,8 +120,7 @@ export default class HomePage extends Component<HomePageOptions> {
           class={tw`container mx-auto xl:flex xl:items-center xl:space-x-16`}
         >
           <div
-            class={tw
-              `flex-1 space-y-12 xl:space-y-16 lg:pt-10 xl:pt-0 pb-12 xl:pb-20`}
+            class={tw`flex-1 space-y-12 xl:space-y-16 lg:pt-10 xl:pt-0 pb-12 xl:pb-20`}
           >
             <AnimatedText
               delay={900}

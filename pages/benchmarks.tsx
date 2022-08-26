@@ -105,8 +105,7 @@ export default class BenchmarksPage extends Component<BenchmarksPageOptions> {
     const script = this.generateScript(attrs.id, module);
     return (
       <div
-        class={tw
-          `bg-gray-100 border-2 rounded-lg border-gray-200 border-opacity-50 p-8 mt-8`}
+        class={tw`bg-gray-100 border-2 rounded-lg border-gray-200 border-opacity-50 p-8 mt-8`}
       >
         <h2 class={tw`text-gray-900 text-lg font-medium mb-3`}>
           {capitalize(module.name)}

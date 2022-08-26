@@ -89,8 +89,7 @@ export class Editor extends Component<EditorOptions> {
           }`}`}
         >
           <span
-            class={tw
-              `w-14 px-2 py-4 text-right font-mono text-sm text-gray-600`}
+            class={tw`w-14 px-2 py-4 text-right font-mono text-sm text-gray-600`}
           >
             {tab.code.trim().split("\n").map((_, i) => <div>{i + 1}</div>)}
           </span>
