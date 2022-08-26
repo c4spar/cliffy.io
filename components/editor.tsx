@@ -60,7 +60,7 @@ export class Editor extends Component<EditorOptions> {
   }
 
   #getId(tab: TabOptions, prefix: string) {
-    return `${prefix}-${tab.fileName}`;
+    return `${prefix}-${tab.fileName.replace(".", "-")}`;
   }
 
   #renderTabButton(tab: TabOptions, selected?: boolean) {
