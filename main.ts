@@ -2,12 +2,6 @@ import { env, serve, SourceFile } from "./deps.ts";
 import { addModuleVersion } from "./lib/utils.ts";
 import HomePage from "./pages/index.tsx";
 
-console.log("env:", {
-  indexName: await env("DOC_SEARCH_INDEX_NAME", true),
-  appId: await env("DOC_SEARCH_APP_ID", true),
-  apiKey: await env("DOC_SEARCH_API_KEY", true),
-});
-
 await serve({
   name: "Cliffy",
   repository: "c4spar/deno-cliffy",
