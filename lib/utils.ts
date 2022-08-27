@@ -20,6 +20,10 @@ export function addModuleVersion(content: string, rev?: string) {
         `https://deno.land/x/cliffy@${rev}/`,
       )
       .replace(
+        /https:\/\/deno\.land\/x\/cliffy@v[0-9]+\.[0-9]+\.[0-9]+\//g,
+        `https://deno.land/x/cliffy@${rev}/`,
+      )
+      .replace(
         /https:\/\/deno\.land\/x\/cliffy@<version>\//g,
         `https://deno.land/x/cliffy@${rev}/`,
       )

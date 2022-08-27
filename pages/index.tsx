@@ -11,7 +11,6 @@ import { ArrowForward } from "../components/icons.tsx";
 import { addModuleVersion } from "../lib/utils.ts";
 import {
   AnimatedText,
-  assert,
   Component,
   getFiles,
   h,
@@ -28,49 +27,33 @@ interface HomePageOptions {
   selectedExample?: string;
 }
 
-export interface ExamplesDataProviderOptions {
-  src: string;
-  selected: string;
-}
-
 export interface Example extends SourceFile {
   code: string;
   command: string;
 }
 
-export class ExamplesDataProvider
-  implements Provider<HomePageOptions, ExamplesDataProviderOptions> {
-  async onInit(
-    req: Request,
-    {
-      src = "examples",
-      selected = "command.ts",
-    }: ExamplesDataProviderOptions,
-  ): Promise<HomePageOptions> {
-    assert(
-      src,
-      "[ExamplesDataProvider] Missing required option src.",
-    );
-    assert(
-      selected,
-      "[ExamplesDataProvider] Missing required option selected.",
-    );
+export class ExamplesDataProvider implements Provider<HomePageOptions> {
+  async onInit(req: Request): Promise<HomePageOptions> {
+    const registryUrl = `https://deno.land/x/cliffy`;
+    const src = "c4spar/deno-cliffy@main:examples";
+    const selectedExample = "command.ts";
 
     const files = await getFiles(src, {
       pattern: /\.ts$/,
       read: true,
       req,
       versions: true,
-      repository: "c4spar/deno-cliffy",
     });
 
     const basePath: string | undefined = files[0]?.basePath;
-    const examplesUrl = `https://deno.land/x/cliffy/${basePath}`;
+    const examplesUrl = `${registryUrl}/${basePath}`;
 
     const examples = files.map((file) =>
       Object.assign(file, {
         code: addModuleVersion(
-          file.content.replace(/#!.+\n+/, ""),
+          file.content
+            .replace(/#!.+\n+/, "")
+            .replace('} from "../', `} from "${registryUrl}/`),
           file.rev,
         ),
         command: addModuleVersion(
@@ -83,10 +66,7 @@ export class ExamplesDataProvider
       })
     );
 
-    return {
-      selectedExample: selected,
-      examples,
-    };
+    return { selectedExample, examples };
   }
 }
 
