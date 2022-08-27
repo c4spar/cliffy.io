@@ -107,7 +107,7 @@ export class Editor extends Component<EditorOptions> {
           id={this.#getId(tab, "tab-example")}
           class={`tab-example ${tw`${selected ? "" : "hidden"}`}`}
           code={tab.command}
-          lang="shell"
+          lang="console"
           rounded
         />
       </div>
