@@ -18,7 +18,7 @@ export {
   SourceFile,
   styles,
   tw,
-} from "https://deno.land/x/night_owl@v0.1.23/mod.ts";
-export { env } from "https://deno.land/x/night_owl@v0.1.23/lib/utils.ts";
+} from "https://deno.land/x/night_owl@v0.1.24/mod.ts";
+export { env } from "https://deno.land/x/night_owl@v0.1.24/lib/utils.ts";
 
-export { assert } from "https://deno.land/std@0.154.0/testing/asserts.ts";
+export { assert } from "https://deno.land/std@0.182.0/testing/asserts.ts";
