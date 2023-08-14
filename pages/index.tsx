@@ -12,7 +12,7 @@ import { addModuleVersion } from "../lib/utils.ts";
 import {
   AnimatedText,
   Component,
-  getFiles,
+  readSourceFiles,
   h,
   Helmet,
   Page,
@@ -34,11 +34,11 @@ export interface Example extends SourceFile {
 
 export class ExamplesDataProvider implements Provider<HomePageOptions> {
   async onInit(req: Request): Promise<HomePageOptions> {
-    const registryUrl = `https://deno.land/x/cliffy`;
+    const registryUrl = `https://deno.land/x/cliffy@v1.0.0-rc.3`;
     const src = "c4spar/deno-cliffy@main:examples";
     const selectedExample = "command.ts";
 
-    const files = await getFiles(src, {
+    const files = await readSourceFiles({ src }, {
       pattern: /\.ts$/,
       read: true,
       req,
