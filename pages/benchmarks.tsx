@@ -9,11 +9,11 @@ import {
   capitalize,
   Component,
   Fragment,
-  readSourceFiles,
   h,
   Helmet,
   Page,
   Provider,
+  readSourceFiles,
   sortByKey,
   SourceFile,
   styles,
@@ -49,7 +49,9 @@ export class BenchmarksPageProvider implements Provider<BenchmarksPageOptions> {
     req: Request,
   ): Promise<BenchmarksPageOptions> {
     return {
-      benchmarks: await readSourceFiles("c4spar/cliffy-benchmarks@main:data", {
+      benchmarks: await readSourceFiles({
+        src: "c4spar/cliffy-benchmarks@main:data",
+      }, {
         pattern: /\.json/,
         read: true,
         req,
