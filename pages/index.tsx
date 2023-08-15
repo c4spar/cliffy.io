@@ -12,7 +12,7 @@ import { addModuleVersion } from "../lib/utils.ts";
 import {
   AnimatedText,
   Component,
-  getFiles,
+  readSourceFiles,
   h,
   Helmet,
   Page,
@@ -38,7 +38,7 @@ export class ExamplesDataProvider implements Provider<HomePageOptions> {
     const src = "c4spar/deno-cliffy@main:examples";
     const selectedExample = "command.ts";
 
-    const files = await getFiles(src, {
+    const files = await readSourceFiles(src, {
       pattern: /\.ts$/,
       read: true,
       req,

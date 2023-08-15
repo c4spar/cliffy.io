@@ -9,7 +9,7 @@ import {
   capitalize,
   Component,
   Fragment,
-  getFiles,
+  readSourceFiles,
   h,
   Helmet,
   Page,
@@ -49,7 +49,7 @@ export class BenchmarksPageProvider implements Provider<BenchmarksPageOptions> {
     req: Request,
   ): Promise<BenchmarksPageOptions> {
     return {
-      benchmarks: await getFiles("c4spar/cliffy-benchmarks@main:data", {
+      benchmarks: await readSourceFiles("c4spar/cliffy-benchmarks@main:data", {
         pattern: /\.json/,
         read: true,
         req,
