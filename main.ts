@@ -2,7 +2,7 @@ import { env, serve, SourceFile } from "./deps.ts";
 import { addModuleVersion } from "./lib/utils.ts";
 import HomePage from "./pages/index.tsx";
 
-await serve({
+serve({
   name: "Cliffy",
   repository: "c4spar/deno-cliffy",
   src: [
