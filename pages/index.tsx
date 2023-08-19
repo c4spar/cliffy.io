@@ -14,6 +14,7 @@ import {
   Component,
   h,
   Helmet,
+  Iconify,
   Page,
   Provider,
   readSourceFiles,
@@ -139,16 +140,21 @@ export default class HomePage extends Component<HomePageOptions> {
                 class={tw`sm:text-lg xl:text-sm 2xl:text-lg
                    opacity-0 transform-gpu animate-slide-in`}
               >
-                Get Started
+                Documentation
                 <ArrowForward class={tw`transform-gpu animate-bounce-right`} />
               </PrimaryButton>
               <SecondaryButton
-                href="/docs"
+                href="https://github.com/c4spar/deno-cliffy/#readme"
+                target="_blank"
                 style="animation-delay: 2000ms;"
                 class={tw`sm:text-lg xl:text-sm 2xl:text-lg
                      opacity-0 transform-gpu animate-slide-in`}
               >
-                Documentation
+                Github
+                <Iconify
+                  icon="akar-icons:github-fill"
+                  class={tw`ml-3 text-2xl inline`}
+                />
               </SecondaryButton>
             </div>
           </div>
