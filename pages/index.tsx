@@ -141,7 +141,6 @@ export default class HomePage extends Component<HomePageOptions> {
                    opacity-0 transform-gpu animate-slide-in`}
               >
                 Documentation
-                <ArrowForward class={tw`transform-gpu animate-bounce-right`} />
               </PrimaryButton>
               <SecondaryButton
                 href="https://github.com/c4spar/deno-cliffy/#readme"
