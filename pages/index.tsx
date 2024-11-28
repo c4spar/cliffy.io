@@ -35,7 +35,7 @@ export interface Example extends SourceFile {
 
 export class ExamplesDataProvider implements Provider<HomePageOptions> {
   async onInit(req: Request): Promise<HomePageOptions> {
-    const registryUrl = `https://deno.land/x/cliffy`;
+    const registryUrl = ``;
     const src = { src: "c4spar/deno-cliffy@main:examples" };
     const selectedExample = "command.ts";
 
@@ -47,14 +47,13 @@ export class ExamplesDataProvider implements Provider<HomePageOptions> {
     });
 
     const basePath: string | undefined = files[0]?.basePath;
-    const examplesUrl = `${registryUrl}/${basePath}`;
+    const examplesUrl = `${registryUrl}${basePath}`;
 
     const examples = files.map((file) =>
       Object.assign(file, {
         code: addModuleVersion(
           file.content
-            .replace(/#!.+\n+/, "")
-            .replace('} from "../', `} from "${registryUrl}/`),
+            .replace(/#!.+\n+/, ""),
           file.rev,
         ),
         command: addModuleVersion(
