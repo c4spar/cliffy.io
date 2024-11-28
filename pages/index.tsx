@@ -7,7 +7,6 @@
 
 import { PrimaryButton, SecondaryButton } from "../components/buttons.tsx";
 import { Editor } from "../components/editor.tsx";
-import { ArrowForward } from "../components/icons.tsx";
 import { addModuleVersion } from "../lib/utils.ts";
 import {
   AnimatedText,
