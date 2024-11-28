@@ -18,8 +18,8 @@ serve({
   nav: {
     collapse: true,
     items: [{
-      label: "API",
-      href: "https://doc.deno.land/https://deno.land/x/cliffy/mod.ts",
+      label: "JSR",
+      href: "https://jsr.io/@cliffy",
     }],
   },
   theme: {
